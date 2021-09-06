@@ -254,10 +254,7 @@ def main():
     # Initialize Daemon
     if args.daemon:
         import time
-        import systemd.daemon
 
-        # Tell systemd that our service is ready
-        systemd.daemon.notify("READY=1")
         print("Service Initializing ...")
         # set some default-defaults
         pause = 60
@@ -395,9 +392,7 @@ def main():
             log.info(f"Looping {len(_commands)} commands")
         for _device, _command, _tag, _outputs, filter, excl_filter in _commands:
             # for item in mppUtilArray:
-            # Tell systemd watchdog we are still alive
             if args.daemon:
-                systemd.daemon.notify("WATCHDOG=1")
                 print(
                     f"Getting results from device: {_device} for command: {_command}, tag: {_tag}, outputs: {_outputs}"
                 )
@@ -425,9 +420,7 @@ def main():
                     excl_filter=excl_filter,
                     keep_case=keep_case,
                 )
-                # Tell systemd watchdog we are still alive
         if args.daemon:
-            systemd.daemon.notify("WATCHDOG=1")
             print(f"Sleeping for {pause} sec")
             time.sleep(pause)
         else:
