@@ -52,7 +52,7 @@ class influx_mqtt(mqtt):
                     unit = ""
                 msg = {
                     "topic": topic,
-                    "payload": f"{tag},setting={key} value={value},unit={unit}",
+                    "payload": f"{tag},setting={key} value={value},unit=\"{unit}\"",
                 }
                 msgs.append(msg)
         return msgs
