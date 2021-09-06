@@ -257,7 +257,7 @@ def main():
 
         print("Service Initializing ...")
         # set some default-defaults
-        pause = 60
+        pause = 5
 
     # If config file specified, process
     if args.configfile:
